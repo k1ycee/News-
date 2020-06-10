@@ -42,7 +42,28 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         body: Column(
-          children: <Widget>[],
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  Text(
+                    "News",
+                    style: TextStyle(color: textDarker),
+                  ),
+                  Container(
+                    height: 20,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: background),
+                    child: Center(child: Text("Some")),
+                  )
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );
