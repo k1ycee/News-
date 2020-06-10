@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:povider/utils/colors.dart';
 import 'package:provider_architecture/_viewmodel_provider.dart';
 
@@ -44,23 +45,39 @@ class HomeScreen extends StatelessWidget {
         body: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
                     "News",
-                    style: TextStyle(color: textDarker),
+                    style: GoogleFonts.nunito(
+                        textStyle: TextStyle(
+                      color: textDarker,
+                      fontSize: 25,
+                      fontWeight: FontWeight.w800,
+                    )),
                   ),
                   Container(
                     height: 20,
                     width: 50,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(8),
                         color: background),
                     child: Center(child: Text("Some")),
                   )
                 ],
+              ),
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: model.hng.length,
+                itemBuilder: (context, index)=> Container(
+                  child: Stack(children: <Widget>[
+
+                  ],),
+                ),
               ),
             )
           ],
