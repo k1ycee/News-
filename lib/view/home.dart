@@ -70,13 +70,54 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(
+            SizedBox(
+              height: 30,
+            ),
+            Container(
+              height: 300,
+              width: MediaQuery.of(context).size.width,
               child: ListView.builder(
+                scrollDirection: Axis.horizontal,
                 itemCount: model.hng.length,
-                itemBuilder: (context, index)=> Container(
-                  child: Stack(children: <Widget>[
-
-                  ],),
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                            image: NetworkImage(model.hng[index].urlToImage),
+                            fit: BoxFit.fill)),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          child: Text(
+                            model.hng[index].title,
+                            style: TextStyle(
+                                color: background,
+                                fontSize: 28,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 9,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 135.0),
+                          child: Text(
+                            model.hng[index].author,
+                            style: TextStyle(
+                                color: background,
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               ),
             )
