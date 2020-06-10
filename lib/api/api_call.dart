@@ -13,7 +13,7 @@ class NewsCall{
   
 
 
-    Future<List<Article>> news() async{
+  Future<List<Article>> news() async{
       final String url = 'http://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=0033eec1ce834b8f93dbd041496980c9';
       var getPeople = await caller.get(url);
       if(getPeople.statusCode == 200){
