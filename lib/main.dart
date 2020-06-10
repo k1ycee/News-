@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:povider/view/home.dart';
 import 'package:povider/view/news_temp.dart';
 import 'package:povider/view_model/news_view_model.dart';
 import 'package:provider_architecture/provider_architecture.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyHomePage(),
+      home: HomeScreen(),
     );
   }
 }
