@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:povider/model/hng_model.dart';
 import 'package:povider/view/news_temp.dart';
 import 'package:povider/view_model/news_view_model.dart';
 import 'package:provider_architecture/provider_architecture.dart';
@@ -38,8 +37,8 @@ class MyHomePage extends StatelessWidget {
             itemBuilder: (context, index){
               return Template(
                 name: Text(model.hng[index].title),
-                id: Text(model.hng[index].author),
-                status: Text(model.hng[index].publishedAt.toString())
+                id: Text(model.hng[index].author.split(' ')[0]),
+                status: Text(model.hng[index].publishedAt.toString().substring(0,10))
               );
             }
           ),
