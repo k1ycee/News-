@@ -44,14 +44,16 @@ class HomeScreen extends StatelessWidget {
         ),
         body: Column(
           children: <Widget>[
+            SizedBox(
+              height: 40.0,
+            ),
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
+              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    "News",
+                    "Tech Crunch",
                     style: GoogleFonts.nunito(
                         textStyle: TextStyle(
                       color: textDarker,
@@ -60,18 +62,28 @@ class HomeScreen extends StatelessWidget {
                     )),
                   ),
                   Container(
-                    height: 20,
-                    width: 50,
+                    height: 32,
+                    padding: EdgeInsets.all(8.0),
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(6),
                         color: background),
-                    child: Center(child: Text("Some")),
+                    child: Center(
+                        child: Text(
+                      "Show all",
+                      style: GoogleFonts.nunito(
+                        textStyle: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: text,
+                        ),
+                      ),
+                    )),
                   )
                 ],
               ),
             ),
             SizedBox(
-              height: 30,
+              height: 8,
             ),
             Container(
               height: 300,
@@ -80,41 +92,91 @@ class HomeScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: model.hng.length,
                 itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: index == 0
+                      ? const EdgeInsets.only(
+                          top: 8.0,
+                          bottom: 8.0,
+                          left: 20.0,
+                          right: 15.0,
+                        )
+                      : index == model.hng.length - 1
+                          ? const EdgeInsets.only(
+                              top: 8.0,
+                              bottom: 8.0,
+                              left: 15.0,
+                              right: 20.0,
+                            )
+                          : const EdgeInsets.only(
+                              top: 8.0,
+                              bottom: 8.0,
+                              left: 15.0,
+                              right: 15.0,
+                            ),
                   child: Container(
                     height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.width * 0.9,
+                    width: MediaQuery.of(context).size.width * 0.82,
                     decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                            image: NetworkImage(model.hng[index].urlToImage),
-                            fit: BoxFit.fill)),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Text(
-                            model.hng[index].title,
-                            style: TextStyle(
-                                color: background,
-                                fontSize: 28,
-                                fontWeight: FontWeight.w700),
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(
+                          image: NetworkImage(model.hng[index].urlToImage),
+                          fit: BoxFit.cover),
+                    ),
+                    child: Stack(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0),
+                            gradient: LinearGradient(
+                                colors: [
+                                  transBlack20,
+                                  transBlack40,
+                                  transBlack60,
+                                  transBlack80,
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter),
                           ),
                         ),
-                        SizedBox(
-                          height: 9,
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            SizedBox(
+                              height: 65,
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20.0),
+                              child: Text(
+                                model.hng[index].title,
+                                maxLines: 4,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.nunito(
+                                  textStyle: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 28,
+                                      height: 1,
+                                      fontWeight: FontWeight.w700),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 9,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 24.0),
+                              child: Text(
+                                model.hng[index].author,
+                                style: GoogleFonts.nunito(
+                                  textStyle: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            )
+                          ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 135.0),
-                          child: Text(
-                            model.hng[index].author,
-                            style: TextStyle(
-                                color: background,
-                                fontSize: 20,
-                                fontWeight: FontWeight.w700),
-                          ),
-                        )
                       ],
                     ),
                   ),
