@@ -28,6 +28,7 @@ dependencies:
   http: ^0.12.1
   flutter_spinkit: ^4.1.2+1
   google_fonts: ^1.1.0
+  flutter_webview_plugin: ^0.3.11
 
 
   # The following adds the Cupertino Icons font to your application.

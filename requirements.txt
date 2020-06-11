@@ -2,3 +2,12 @@ Font Family
 Colors
 Dimensions
 Corner specifications
+
+put this in your ios/Runner/Info.plist
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+    <key>NSAllowsArbitraryLoadsInWebContent</key>
+    <true/>
+</dict>

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:povider/utils/colors.dart';
 import 'package:provider_architecture/_viewmodel_provider.dart';
 
 import '../view_model/news_view_model.dart';
 
+
+// TODO: Check requirements.txt so that things won't break into pieces for IOS. Thanks in anticipation Sir
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,6 +16,7 @@ class HomeScreen extends StatelessWidget {
       viewModelBuilder: () => NewsViewModel(),
       onModelReady: (model) => model.getNews(),
       builder: (context, model, child) => Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -88,7 +93,7 @@ class HomeScreen extends StatelessWidget {
             Container(
               height: 300,
               width: MediaQuery.of(context).size.width,
-              child: ListView.builder(
+              child: model.hng.length == 0 ? Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(textDarker),)) :  ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: model.hng.length,
                 itemBuilder: (context, index) => Padding(
@@ -112,72 +117,83 @@ class HomeScreen extends StatelessWidget {
                               left: 15.0,
                               right: 15.0,
                             ),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.width * 0.82,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                          image: NetworkImage(model.hng[index].urlToImage),
-                          fit: BoxFit.cover),
-                    ),
-                    child: Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.0),
-                            gradient: LinearGradient(
-                                colors: [
-                                  transBlack20,
-                                  transBlack40,
-                                  transBlack60,
-                                  transBlack80,
-                                ],
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter),
+                  child: GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => WebviewScaffold(
+                        url: model.hng[index].url,
+                        appBar: AppBar(leading: IconButton(icon: Icon(Icons.keyboard_backspace),onPressed:(){Navigator.pop(context);} ,),centerTitle: true, title: Text(model.hng[index].title), backgroundColor: textDarker,),
+                        withJavascript: true,
+                        withLocalStorage: true,
+                        withZoom: true,
+                        initialChild: Center(child: SpinKitChasingDots(color: textDarker, size: 50),),),)
+                      );},
+                      child: Container(
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width * 0.82,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                            image: NetworkImage(model.hng[index].urlToImage),
+                            fit: BoxFit.cover),
+                      ),
+                      child: Stack(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              gradient: LinearGradient(
+                                  colors: [
+                                    transBlack20,
+                                    transBlack40,
+                                    transBlack60,
+                                    transBlack80,
+                                  ],
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter),
+                            ),
                           ),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            SizedBox(
-                              height: 65,
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20.0),
-                              child: Text(
-                                model.hng[index].title,
-                                maxLines: 4,
-                                overflow: TextOverflow.ellipsis,
-                                style: GoogleFonts.nunito(
-                                  textStyle: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 28,
-                                      height: 1,
-                                      fontWeight: FontWeight.w700),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              SizedBox(
+                                height: 65,
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20.0),
+                                child: Text(
+                                  model.hng[index].title,
+                                  maxLines: 4,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: GoogleFonts.nunito(
+                                    textStyle: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 28,
+                                        height: 1,
+                                        fontWeight: FontWeight.w700),
+                                  ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: 9,
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 24.0),
-                              child: Text(
-                                model.hng[index].author,
-                                style: GoogleFonts.nunito(
-                                  textStyle: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600),
-                                ),
+                              SizedBox(
+                                height: 9,
                               ),
-                            )
-                          ],
-                        ),
-                      ],
+                              Padding(
+                                padding: const EdgeInsets.only(left: 24.0),
+                                child: Text(
+                                  model.hng[index].author,
+                                  style: GoogleFonts.nunito(
+                                    textStyle: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
