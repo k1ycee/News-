@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:povider/api/api_call.dart';
-import 'package:povider/model/business_model.dart';
 import 'package:povider/model/hng_model.dart';
 
 class NewsViewModel extends ChangeNotifier{
