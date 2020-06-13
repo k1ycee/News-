@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:povider/utils/colors.dart';
+import 'package:povider/view/business.dart';
 import 'package:povider/widgets/horizontal_news_item.dart';
 import 'package:provider_architecture/_viewmodel_provider.dart';
 
@@ -48,7 +47,7 @@ class HomeScreen extends StatelessWidget {
             )
           ],
         ),
-        body: Column(
+        body: ListView(
           children: <Widget>[
             SizedBox(
               height: 40.0,
@@ -103,7 +102,44 @@ class HomeScreen extends StatelessWidget {
                   model.hng.length,
                 ),
               ),
-            )
+            ),
+            SizedBox(height: 20,),
+            Padding(
+              padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    "Business",
+                    style: GoogleFonts.nunito(
+                        textStyle: TextStyle(
+                      color: textDarker,
+                      fontSize: 25,
+                      fontWeight: FontWeight.w800,
+                    )),
+                  ),
+                  Container(
+                    height: 32,
+                    padding: EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6),
+                        color: background),
+                    child: Center(
+                        child: Text(
+                      "Show all",
+                      style: GoogleFonts.nunito(
+                        textStyle: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                          color: text,
+                        ),
+                      ),
+                    )),
+                  )
+                ],
+              ),
+            ),
+            Business()
           ],
         ),
       ),

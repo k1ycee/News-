@@ -9,8 +9,9 @@ class TopNewsWidget extends StatelessWidget {
   final Article article;
   final int index;
   final int size;
+  FlutterWebviewPlugin webview = FlutterWebviewPlugin();
 
-  const TopNewsWidget(this.article, this.index, this.size);
+  TopNewsWidget(this.article, this.index, this.size);
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +46,10 @@ class TopNewsWidget extends StatelessWidget {
                   appBar: AppBar(
                     leading: IconButton(
                       icon: Icon(Icons.keyboard_backspace),
-                      onPressed: () {
+                      onPressed: () async{
+                        await webview.close();
                         Navigator.pop(context);
+                        webview.dispose();
                       },
                     ),
                     centerTitle: true,
