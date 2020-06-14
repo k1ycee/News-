@@ -6,5 +6,7 @@ TextStyle getNormalStyle({@required double fontSize, @required Color color}) =>
       textStyle: TextStyle(
         fontSize: fontSize,
         color: color,
+        fontWeight: FontWeight.w700,
+        height: 1
       ),
     );
