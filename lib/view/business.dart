@@ -20,8 +20,9 @@ class _BusinessState extends State<Business> {
       viewModelBuilder: () => BusinessViewModel(),
       onModelReady: (model) => model.getBusiness(),
       builder: (context, model, _) => Container(
-        height: MediaQuery.of(context).size.height,
+        height: MediaQuery.of(context).size.height * 0.375,
         child: ListView.builder(
+          shrinkWrap: true,
           itemCount: model.busin.length,
           itemBuilder: (context, index) => GestureDetector(
             onTap: () {
@@ -53,12 +54,10 @@ class _BusinessState extends State<Business> {
                   ));
             },
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
               child: Container(
                 height: 100,
-                width: 300,
                 child: Row(
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.symmetric(
@@ -104,28 +103,29 @@ class _BusinessState extends State<Business> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Container(
-                        width: 160,
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
                               model.busin[index].title,
-                              maxLines: 3,
+                              maxLines: 2,
                               overflow: TextOverflow.ellipsis,
-                              style: getNormalStyle(fontSize: 22, color: text),
+                              style: getMediumStyle(fontSize: 19, color: text),
                             ),
                             Padding(
                               padding:
-                                  const EdgeInsets.only(bottom: 1.0, left: 50),
+                                  const EdgeInsets.only(bottom: 1.0, top: 8.0),
                               child: Text(
                                 model.busin[index].author == null
                                     ? 'No Author'
                                     : model.busin[index].author,
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 3,
-                                style: getNormalStyle(
+                                style: getBoldStyle(
                                     fontSize: 12, color: textLight),
                               ),
                             )

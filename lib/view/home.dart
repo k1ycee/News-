@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
             )
           ],
         ),
-        body: ListView(
+        body: Column(
           children: <Widget>[
             SizedBox(
               height: 40.0,
@@ -139,6 +139,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(height: 4.0,),
             Business()
           ],
         ),
