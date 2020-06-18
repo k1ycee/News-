@@ -19,18 +19,16 @@ This is a news app built with -
 - [Googlefonts](https://pub.dev/packages/google_fonts)
 - [FlutterWebViewPlugin](https://pub.dev/packages/flutter_webview_plugin)
 
-## Screenshot 
-
-![Android](Screenshots/flutter_01.png)
-
-Built by -
-
 ## Contributors 
 
-[Me](https://github.com/k1ycee)
+[K1ycee](https://github.com/k1ycee)\n
 [AbdulGuru](https://github.com/AbdulDroid)
 
 
 ## Special Thanks
 
 [AbdulGuru](https://github.com/AbdulDroid)
+
+## Screenshot 
+
+![Android](Screenshots/flutter_01.png)
