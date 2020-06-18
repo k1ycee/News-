@@ -21,7 +21,7 @@ This is a news app built with -
 
 ## Screenshot 
 
-[Android](Screenshots/flutter_01.png)
+![Android](Screenshots/flutter_01.png)
 
 Built by -
 
