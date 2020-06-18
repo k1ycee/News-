@@ -21,7 +21,8 @@ This is a news app built with -
 
 ## Contributors 
 
-[K1ycee](https://github.com/k1ycee)\n
+[K1ycee](https://github.com/k1ycee)
+
 [AbdulGuru](https://github.com/AbdulDroid)
 
 
