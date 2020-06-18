@@ -2,9 +2,9 @@
 
 A new Flutter project.
 
-## Getting Started
+## Brief Explanation
 
-This is a news app built with -
+This is a news app built with flutter with the MVVM architecture 
 
 ## API
 
@@ -33,3 +33,5 @@ This is a news app built with -
 ## Screenshot 
 
 ![Android](Screenshots/flutter_01.png)
+
+
