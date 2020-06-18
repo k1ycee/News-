@@ -1,16 +1,36 @@
-# povider
+# NewsApp
 
 A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This is a news app built with -
 
-A few resources to get you started if this is your first Flutter project:
+## API
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- [NewsApi](https://newsapi.org/)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Packages 
+
+- [Provider](https://pub.dev/packages/provider)
+- [ProviderArchitecture](https://pub.dev/packages/provider_architecture)
+- [Http](https://pub.dev/packages/http)
+- [FlutterSpinkit](https://pub.dev/packages/flutter_spinkit)
+- [Googlefonts](https://pub.dev/packages/google_fonts)
+- [FlutterWebViewPlugin](https://pub.dev/packages/flutter_webview_plugin)
+
+## Screenshot 
+
+[Android](Screenshots/flutter_01.png)
+
+Built by -
+
+## Contributors 
+
+[Me](https://github.com/k1ycee)
+[AbdulGuru](https://github.com/AbdulDroid)
+
+
+## Special Thanks
+
+[AbdulGuru](https://github.com/AbdulDroid)
